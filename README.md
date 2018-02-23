@@ -1,2 +1,6 @@
 # VTT-For-Botanical-Gardens
-Repository for 2018 Current Trends &amp; Technology
+Repository for 2018 Current Issues &amp; Trends
+
+- [Trello Team Page](https://trello.com/currentissuesandtrends2018/account)
+
+- [Trello SCRUM Board](https://trello.com/b/y3Ifbp6Q/vtt-scrum-board)
