@@ -5,19 +5,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema ATTDraft
+-- Schema VTTDraft
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema ATTDraft
+-- Schema VTTDraft
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `ATTDraft` DEFAULT CHARACTER SET utf8 ;
-USE `ATTDraft` ;
+CREATE SCHEMA IF NOT EXISTS `VTTDraft` DEFAULT CHARACTER SET utf8 ;
+USE `VTTDraft` ;
 
 -- -----------------------------------------------------
--- Table `ATTDraft`.`Volunteer`
+-- Table `VTTDraft`.`Volunteer`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ATTDraft`.`Volunteer` (
+CREATE TABLE IF NOT EXISTS `VTTDraft`.`Volunteer` (
   `VolunteerID` INT NOT NULL,
   `FirstName` VARCHAR(45) NOT NULL,
   `LastName` VARCHAR(45) NOT NULL,
@@ -36,9 +36,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ATTDraft`.`VolunteerEntry`
+-- Table `VTTDraft`.`VolunteerEntry`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ATTDraft`.`VolunteerEntry` (
+CREATE TABLE IF NOT EXISTS `VTTDraft`.`VolunteerEntry` (
   `VolunteerEntryID` INT NOT NULL,
   `Date` DATETIME NOT NULL,
   `ActivityType` VARCHAR(45) NOT NULL,
@@ -59,9 +59,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `ATTDraft`.`VolunteerCredentials`
+-- Table `VTTDraft`.`VolunteerCredentials`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `ATTDraft`.`VolunteerCredentials` (
+CREATE TABLE IF NOT EXISTS `VTTDraft`.`VolunteerCredentials` (
   `VCredentialsID` INT NOT NULL,
   `Username` VARCHAR(45) NOT NULL,
   `Password` VARCHAR(45) NOT NULL,
