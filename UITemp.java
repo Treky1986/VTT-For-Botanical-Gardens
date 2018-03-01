@@ -11,6 +11,11 @@ import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
@@ -28,6 +33,13 @@ public class UITemp extends JFrame {
 	private int intPass;
 	static ArrayList<String> listUser;
 	static ArrayList<String> listPass;
+	
+	// Constant for database URL.
+	public final String DB_URL =
+	               "jdbc:derby:CoffeeDB";
+
+	// Field for the database connection
+	private Connection conn;
 
 	/**
 	 * Launch the application.
@@ -79,7 +91,26 @@ public class UITemp extends JFrame {
 		{
 			public void actionPerformed(ActionEvent arg0) 
 			{
-				runEnter();
+				Boolean checkSum = false;
+				//runEnter();
+				try
+				{
+					if(trueRun() == true)
+						checkSum = true;
+					else
+						checkSum = false;
+				}
+				catch (SQLException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				//checks boolean
+				if(checkSum == true)
+					lblError.setText("Success");
+				else
+					lblError.setText("Invalid Username or Password");
 			}
 		});
 		btnEnter.setBounds(109, 215, 91, 23);
@@ -111,7 +142,7 @@ public class UITemp extends JFrame {
 			listPass.add("slipFwack12");
 	}
 	
-	private void runEnter()
+	private void runEnter() //Not used though possibly useful?
 	{
 		if (txtUser.getText() != "" && txtPass.getText() != "")
 		{
@@ -139,36 +170,85 @@ public class UITemp extends JFrame {
 			{
 				lblError.setText("Invalid Username");
 			}
-			/*for (String strTemp: listUser)
-			{
-				if (strTemp == strUser)
-				{
-					if (strPass == listPass.get(intIndex))
-					{
-						lblError.setText("Success");
-					}
-					else
-					{
-						lblError.setText("Invalid Password");
-					}
-					
-					break;
-				}
-				else
-				{
-					intIndex++;
-					
-					if (intIndex == listUser.size())
-					{
-						lblError.setText("Invalid Username");
-					}
-				}
-			}*/
 		}
 		else
 		{
 			lblError.setText("Please enter username AND password");
 		}
+	}
+	
+	private Boolean trueRun() throws SQLException
+	{
+		if (txtUser.getText() != "" && txtPass.getText() != "")
+		{
+			strUser = txtUser.getText();
+			strPass = txtPass.getText();
+			String strFinal = "";
+			
+			// Create a connection to the database.
+			conn = DriverManager.getConnection(DB_URL);
+			
+			// Create a Statement object for the query.
+			Statement stmt = conn.createStatement();
+			
+			// Execute the query.
+			ResultSet resultSet = stmt.executeQuery(
+			          "SELECT Username " +
+			          "FROM volunteerCredentials" +
+			          "WHERE Username = '" +
+			          strUser + "' LIMIT 1");
+			
+			// If the result set has a row, go to it
+			// and retrieve the product number.
+			if (resultSet.next())
+				strFinal = resultSet.getString(1);
+				
+			// Close the Connection and Statement objects.
+			conn.close();
+			stmt.close();
+			
+			if (strUser == strFinal)
+				return checkPass(strUser, strPass);
+			else
+				lblError.setText("Invalid Username");
+				return false;
+		}
+		else
+		{
+			lblError.setText("Please enter username AND password");
+			return false;
+		}
+	}
+	
+	public Boolean checkPass(String un, String pw) throws SQLException
+	{
+		// Create a connection to the database.
+		conn = DriverManager.getConnection(DB_URL);
+		
+		// Create a Statement object for the query.
+		Statement stmt = conn.createStatement();
+		
+		// Execute the query.
+		ResultSet resultSet = stmt.executeQuery(
+		          "SELECT Username " +
+		          "FROM volunteerCredentials" +
+		          "WHERE Username = '" +
+		          un + "' AND Password = '" +
+		          pw + "'" +
+		          "LIMIT 1");
+		
+		// If the result set has a row, go to it
+		// .
+		if (resultSet.next())
+			return true;
+		
+		// Close the Connection and Statement objects.
+		conn.close();
+		stmt.close();
+		
+		//
+		lblError.setText("Invalid Password");
+		return false;
 	}
 	
 	private void clearFields()
