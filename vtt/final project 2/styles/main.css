@@ -1,0 +1,289 @@
+/* Harshal Gadhiya 
+/*chapter 7 assignment
+
+
+/* the styles for the elements */
+*{
+	margin: 0;
+	padding: 0;
+
+}
+a:hover{font-style: italic; color: green;}
+a:focus{font-style: italic; font-size: 120%;}
+
+
+/* the styles for the html */
+html {
+   background-color: #006666;
+
+}
+
+
+/* the styles for the body */
+body {
+	font-family: Arial, Helvetica, sans-serif;
+    font-size: 100%;
+	width: 99%;
+	max-width:1300px;
+	margin-top:0;
+	margin-bottom:0;
+	margin-right: auto;
+	margin-left: auto;
+	border-left:3px solid black ;
+	border-right:3px solid black;
+	border-radius: 50px;
+	background-color: #006666;
+         
+ }
+
+
+
+/* the styles for the header */
+header {
+	font-family:Bauhaus 93;
+	font-size:100%;
+	border:3px solid #006666;
+	border-radius:50px;
+	padding-top:1.5em;
+	padding-bottom: 2em;
+	background-color:rgba(192,192,192,0.9);
+
+	
+	
+	
+}
+header  img {
+	float: left;
+	padding: 0 3.125% 0;
+
+}
+
+header h2{
+	font-size: 170%;
+	color: #006666;
+	}
+header h3 {
+	font-size: 130%;
+	font-style: italic;
+}
+/*styles for the menu*/
+#nav_menu{
+	font-family:Bauhaus 93;
+}
+
+#nav_menu > ul:after{
+	content:" ";
+	display:block;
+	clear: both;
+}
+#nav_menu ul {
+	list-style-type: none;
+	padding:0em;
+	margin:0em;
+	position:relative;
+}
+#nav_menu ul li {
+	float:left;
+	width:20%;
+	}
+#nav_menu ul li:hover > ul {
+	display:block;
+}
+#nav_menu ul li:hover ul{
+	width:100%;
+}
+#nav_menu ul li a {
+	display:block;
+	text-decoration:none;
+	text-align:center;
+	padding-top:1em;
+	padding-bottom:1em;
+	background-color:#006666;
+	color: white;
+	font-weight: bold;
+	width:100%
+}
+#nav_menu ul li a.current {
+	color: yellow;
+}
+#nav_menu ul ul{
+	display:none;
+	position: absolute;
+}
+#nav_menu ul ul li {
+	float:none;
+}
+/* the styles for the main */
+main {
+	clear: left;
+}
+
+
+/* the styles for the section */
+main section{
+	width: 70%;
+	float: right;
+	padding-right:2.083%;
+	padding-left:2.083%;
+	padding-bottom:2.083%;
+	border:2px solid #006666;
+	border-radius: 40px;
+	background-color: #80ffff;
+	text-align:justify;
+	
+}
+main section img {
+	
+	width:70%;
+}
+main section h1{
+	font-size: 150%;
+	padding-top:0.5em;
+	padding-bottom:0.25em;
+	margin-top:0;
+	margin-bottom:0;
+	
+}
+main section h2{
+	font-size: 130%;
+	color: #006666;
+	padding-top:0.5em;
+	padding-bottom:0.25em;
+}
+main section p {
+	padding-bottom:0.5em;
+}
+
+main section ul {
+	padding-bottom: 0.25em;
+	padding-left: 1.25em;
+}
+mian section li{
+	padding-bottom: 0.35em;
+}
+
+
+/* the styles for the aside */
+main aside{
+	width:20%;
+	float: right;
+	padding-bottom:2.08%;
+	padding-left:2.08%;
+	border:2px solid #006666;
+	border-radius: 40px;
+	background-color: #80ffff;
+}
+main aside img{
+	max-width: 60%;
+	
+}
+
+main aside h2{
+	font-size: 130%;
+	color: #006666;
+	padding-top:0.5em;
+	padding-bottom:0.25em;
+}
+
+main aside h3{
+	font-size: 105%;
+	padding-bottom:0.25em;
+	}
+main aside a {
+	font-style: italic;
+   }
+main aside img{
+     padding-bottom: 1em;
+	
+	
+}
+/* the styles for the article */
+main article{
+	padding:1em;
+	border:1px solid #888888;
+	border-radius: 40px;
+	margin-bottom: 2em;
+	margin-top:2em;
+	height:400px;
+	background-color: #80ffff;
+	box-shadow: 8px 8px 5px #888888;
+
+}
+main article img{
+	float: right;
+	margin:1em;
+    padding: 0;
+	width:50%;
+	height:60%;
+}
+main article h2{
+	padding-top:0;
+}
+main article h3{
+	font-size:105%;
+	padding-bottom:0.25em;
+}
+
+
+
+
+
+/* the styles for the footer */
+footer{
+	background-color:#006666;
+	padding-top: 1em;
+	padding-bottom: 1em;
+	clear: both;
+}
+footer p {
+	text-align: center;
+	color:white;
+}
+
+/* The styles for the class shadow */
+.shadow{
+text-shadow: 2px 2px 4px #006666;
+
+}
+#mobile_menu{
+	display:none;
+}
+@media only screen and (max-width : 959px){
+	#nav_menu ul li a {font-size:.875em;}
+	main section h1{font-size:1.35em;}
+	main section h2, main aside h2{ font-size: 1.20em;}
+}
+@media only screen and (max-width : 767px){
+	#nav_menu{
+		display:none;
+	}
+	#mobile_menu{
+		display:block;
+	}
+	.slicknav_menu{
+		background-color: #006666 !important;
+	}
+	main header img {float:none;}
+
+	main section{
+		float:none;
+		width:95.84%;
+	}
+	main aside{
+		float:none;
+		padding-right:2.08%;
+		width:95.84%;
+		}
+	main article img {
+			min-width:99%;
+		}
+	main aside div{
+			-moz-column-count:2;
+			-webkit-column-count:2;
+			column-count:2;
+		}
+		*{font-size:90%;}
+	}
+@media only screen and (max-width: 479px){
+	* {font-size:90%;}
+}
