@@ -65,7 +65,7 @@ public class Queries {
 		try
 		{
 			//tries to use the connection to run the query
-			PreparedStatement stmt = conn.prepareStatement("SELECT VolunteerID FROM VolunteerCredentials WHERE FirstName = ? AND WHERE LastName = ?");
+			PreparedStatement stmt = conn.prepareStatement("SELECT VolunteerID FROM VolunteerCredentials WHERE FirstName = ? AND LastName = ?");
 			stmt.setString(1, strFirst); //inputs the username
 			stmt.setString(2, strLast); //inputs the username
 			ResultSet rs = stmt.executeQuery();
